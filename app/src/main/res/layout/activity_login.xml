@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/plain_logo"
+        android:layout_marginTop="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:transitionName="logo_image" />
+
+    <TextView
+        android:id="@+id/login_welcome"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_welcome"
+        android:textSize="30sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black"
+        android:transitionName="logo_text" />
+
+    <TextView
+        android:id="@+id/login_text"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_text"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_bold"
+        android:transitionName="logo_slogan" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:hint="@string/login_email"
+            android:transitionName="email_tran"
+            app:boxStrokeColor="@color/light_pink"
+            app:hintTextColor="@color/dark_gray"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/gray"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/gray"
+
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:inputType="textEmailAddress"
+                android:textSize="15sp"
+                android:textCursorDrawable="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/password"
+            android:layout_below="@id/email"
+            android:hint="@string/login_password"
+            android:transitionName="password_tran"
+            app:boxStrokeColor="@color/light_pink"
+            app:hintTextColor="@color/dark_gray"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/gray"
+            app:endIconTint="@color/gray"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/forgot_password"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:onClick="callForgotPassword"
+            android:text="@string/login_forgot_password"
+            android:textAllCaps="false"
+            android:textColor="@color/light_pink"
+            android:textSize="14sp"
+            android:transitionName="signin_tran"
+
+            app:rippleColor="@color/light_pink" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signin"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/forgot_password"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/dark_pink"
+            android:fontFamily="@font/poppins_bold"
+            android:onClick="loginUser"
+            android:text="@string/login_btn"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:transitionName="signin_tran"
+            app:rippleColor="@color/white" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup_new_user"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signin"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:onClick="callSignUp"
+            android:text="@string/login_new_user"
+            android:textAllCaps="false"
+            android:textColor="@color/light_pink"
+            android:textSize="14sp"
+            app:rippleColor="@color/light_pink" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email"
+            android:layout_centerInParent="true"
+            android:elevation="8dp"
+            android:padding="50dp">
+
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_circular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@android:color/white"
+                app:trackColor="@color/dark_pink"
+                app:trackThickness="4dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</LinearLayout>

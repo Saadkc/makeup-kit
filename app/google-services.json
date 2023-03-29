@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "729282787385",
+    "project_id": "automatic-makeup-kit",
+    "storage_bucket": "automatic-makeup-kit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729282787385:android:ac11a6ea3d35ee0b9e75e8",
+        "android_client_info": {
+          "package_name": "com.automaticmakeupkit.automaticmakeupkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729282787385-js4lhcakpu72ro2jm219447jug0dac2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlqZEIFEY5S1Ia_vc6uSzdh9exnaBEiV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729282787385-js4lhcakpu72ro2jm219447jug0dac2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

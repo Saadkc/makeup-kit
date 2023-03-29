@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Automatic Makeup Kit</string>
+    <string name="slogan">Transforming your Makeup Style</string>
+
+
+    <string name="login_welcome">Welcome Back</string>
+    <string name="login_text">Log In to your Account</string>
+    <string name="login_email">Email Address</string>
+    <string name="login_password">Password</string>
+    <string name="login_forgot_password">Forgot Password?</string>
+    <string name="forgot_password_text">Don\'t worry! It happens. Please enter your email address below to reset your password.</string>
+    <string name="forgot_password_btn">Reset Password</string>
+    <string name="login_btn">Sign In</string>
+    <string name="login_new_user">New User? Sign Up</string>
+
+    <string name="signup_welcome">Welcome</string>
+    <string name="signup_text">Create your Account</string>
+    <string name="signup_name">Full Name</string>
+    <string name="signup_email">Email Address</string>
+    <string name="signup_phone">Phone Number</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_btn">Sign Up</string>
+    <string name="signup_existing_user">Existing User? Sign In</string>
+
+
+    <string name="dashboard_welcome">Welcome to Automatic Makeup Kit</string>
+    <string name="dashboard_search_text">Search...</string>
+    <string name="dashboard_bmi">Calculate BMI</string>
+    <string name="dashboard_profile">Update Profile</string>
+    <string name="dashboard_categories">Get Started Now</string>
+    <string name="dashboard_view_all">View All</string>
+    <string name="dashboard_featured_dieticians">Featured Dieticians</string>
+    <string name="dashboard_user_intro">Hi User 👋</string>
+    <string name="dashboard_featured_dieticians_description">Book your appointment with dieticians</string>
+    <string name="dietician_1_name">Dr. Sarah Gill</string>
+    <string name="dieticians_1_description">Dr. Sarah is an experienced dietician who have helped thousands of patients.</string>
+
+
+    <string name="generate_plan">Generate Meal Plan</string>
+    <string name="generate_meal_plan_description">Generate your meal plan within seconds.</string>
+    <string name="generate">Generate</string>
+
+
+    <string name="bmi_welcome_message">Calculate BMI</string>
+
+    <string name="bmi_weight">Weight (In KGs)</string>
+    <string name="bmi_feet">Height (In Feet)</string>
+    <string name="bmi_inches">Height (In inches)</string>
+    <string name="calculateBMI_btn">Calculate</string>
+
+    <string name="your_bmi"></string>
+    <string name="title_activity_generate_meal_plan1">generateMealPlan1</string>
+
+
+    <string name="meal_plan_welcome">Generate Meal Plan</string>
+    <string name="about_you">Tell us a bit about yourself</string>
+    <string name="choose_your_diet">Choose your Diet</string>
+
+
+    <string name="veg">Vegetarian</string>
+    <string name="nonveg">Non-vegetarian</string>
+
+
+    <string name="choose_your_goal">Choose Your Goal</string>
+
+    <string name="weight_loss">Weight Loss</string>
+    <string name="weight_gain">Weight Gain</string>
+
+    <string name="generateMealPlan">Generate Meal Plan</string>
+
+
+</resources>
