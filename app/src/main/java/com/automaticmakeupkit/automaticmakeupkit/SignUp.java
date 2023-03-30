@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,6 +27,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class SignUp extends AppCompatActivity {
 
@@ -38,10 +44,13 @@ public class SignUp extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_sign_up);
 
@@ -64,15 +73,15 @@ public class SignUp extends AppCompatActivity {
         Intent intent = new Intent(SignUp.this, Login.class);
 
         Pair[] pairs = new Pair[9];
-        pairs[0] = new Pair<View,String>(imgPlainLogo, "logo_image");
-        pairs[1] = new Pair<View,String>(txtSignUpWelcome, "logo_text");
-        pairs[2] = new Pair<View,String>(txtSignUpSlogan, "logo_slogan");
-        pairs[3] = new Pair<View,String>(inpFullName, "email_tran");
-        pairs[4] = new Pair<View,String>(inpEmail, "email_tran");
-        pairs[5] = new Pair<View,String>(inpPhone, "password_tran");
-        pairs[6] = new Pair<View,String>(inpPassword, "password_tran");
-        pairs[7] = new Pair<View,String>(SignUp, "signin_tran");
-        pairs[8] = new Pair<View,String>(callSignIn, "signin_signup_tran");
+        pairs[0] = new Pair<View, String>(imgPlainLogo, "logo_image");
+        pairs[1] = new Pair<View, String>(txtSignUpWelcome, "logo_text");
+        pairs[2] = new Pair<View, String>(txtSignUpSlogan, "logo_slogan");
+        pairs[3] = new Pair<View, String>(inpFullName, "email_tran");
+        pairs[4] = new Pair<View, String>(inpEmail, "email_tran");
+        pairs[5] = new Pair<View, String>(inpPhone, "password_tran");
+        pairs[6] = new Pair<View, String>(inpPassword, "password_tran");
+        pairs[7] = new Pair<View, String>(SignUp, "signin_tran");
+        pairs[8] = new Pair<View, String>(callSignIn, "signin_signup_tran");
 
         ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(SignUp.this, pairs);
         startActivity(intent, activityOptions.toBundle());
@@ -83,13 +92,11 @@ public class SignUp extends AppCompatActivity {
     private Boolean validateFullName(String fullName) {
         String val = fullName;
 
-        if(val.isEmpty()) {
+        if (val.isEmpty()) {
             inpFullName.setError("Required");
             inpFullName.requestFocus();
             return false;
-        }
-
-        else {
+        } else {
             inpFullName.setError(null);
             inpFullName.setErrorEnabled(false);
             return true;
@@ -101,19 +108,15 @@ public class SignUp extends AppCompatActivity {
         String val = emailAddress;
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        if(val.isEmpty()) {
+        if (val.isEmpty()) {
             inpEmail.setError("Required");
             inpEmail.requestFocus();
             return false;
-        }
-
-        else if(!val.matches(emailPattern)) {
+        } else if (!val.matches(emailPattern)) {
             inpEmail.setError("Invalid Email Address");
             inpEmail.requestFocus();
             return false;
-        }
-
-        else {
+        } else {
             inpEmail.setError(null);
             inpEmail.setErrorEnabled(false);
             return true;
@@ -124,13 +127,11 @@ public class SignUp extends AppCompatActivity {
     private Boolean validatePhoneNumber(String phoneNumber) {
         String val = phoneNumber;
 
-        if(val.isEmpty()) {
+        if (val.isEmpty()) {
             inpPhone.setError("Required");
             inpPhone.requestFocus();
             return false;
-        }
-
-        else {
+        } else {
             inpPhone.setError(null);
             inpPhone.setErrorEnabled(false);
             return true;
@@ -151,18 +152,14 @@ public class SignUp extends AppCompatActivity {
                 ".{4,}" +               //at least 4 characters
                 "$";
 
-        if(val.isEmpty()) {
+        if (val.isEmpty()) {
             inpPassword.setError("Required");
             inpPassword.requestFocus();
             return false;
-        }
-
-        else if(!val.matches(passwordPattern)) {
+        } else if (!val.matches(passwordPattern)) {
             inpPassword.setError("Weak Password");
             return false;
-        }
-
-        else {
+        } else {
             inpPassword.setError(null);
             inpPassword.setErrorEnabled(false);
             return true;
@@ -181,7 +178,7 @@ public class SignUp extends AppCompatActivity {
         String Password = inpPassword.getEditText().getText().toString().trim();
 
 
-        if(!validateFullName(fullName) | !validateEmailAddress(emailAddress) | !validatePhoneNumber(phoneNumber) | !validatePassword(Password)) {
+        if (!validateFullName(fullName) | !validateEmailAddress(emailAddress) | !validatePhoneNumber(phoneNumber) | !validatePassword(Password)) {
             return;
         }
 
@@ -191,38 +188,62 @@ public class SignUp extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        System.out.println(task);
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             UserHelper user = new UserHelper(fullName, emailAddress, phoneNumber);
-                            reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(SignUp.this, "You have registered successfully.", Toast.LENGTH_LONG).show();
-                                        circularProgressIndicator.setVisibility(View.GONE);
+                            db.collection("users")
+                                    .add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Toast.makeText(SignUp.this, "You have registered successfully.", Toast.LENGTH_LONG).show();
+                                            circularProgressIndicator.setVisibility(View.GONE);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Intent intent = new Intent(SignUp.this, Login.class);
+                                                    startActivity(intent);
+                                                }
+                                            }, 2500);
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            System.out.println(e.toString());
+                                            Toast.makeText(SignUp.this, e.toString(), Toast.LENGTH_LONG).show();
+                                            circularProgressIndicator.setVisibility(View.GONE);
 
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Intent intent = new Intent(SignUp.this, Login.class);
-                                                startActivity(intent);
-                                            }
-                                        },2500);
+                                        }
+                                    });
 
-                                    }
-                                    else {
-                                        Toast.makeText(SignUp.this, "User already exists, please log in.", Toast.LENGTH_LONG).show();
-                                        circularProgressIndicator.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
+//                            reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    System.out.println(task.isSuccessful());
+//                                    System.out.println("Working");
+//                                    if (task.isSuccessful()) {
+//                                        Toast.makeText(SignUp.this, "You have registered successfully.", Toast.LENGTH_LONG).show();
+//                                        circularProgressIndicator.setVisibility(View.GONE);
+//
+//                                        new Handler().postDelayed(new Runnable() {
+//                                            @Override
+//                                            public void run() {
+//                                                Intent intent = new Intent(SignUp.this, Login.class);
+//                                                startActivity(intent);
+//                                            }
+//                                        }, 2500);
+//
+//                                    } else {
+//                                        Toast.makeText(SignUp.this, "User already exists, please log in.", Toast.LENGTH_LONG).show();
+//                                        circularProgressIndicator.setVisibility(View.GONE);
+//                                    }
+//                                }
+//                            });
                         } else {
                             Toast.makeText(SignUp.this, "User already exists, please log in.", Toast.LENGTH_LONG).show();
                             circularProgressIndicator.setVisibility(View.GONE);
                         }
                     }
                 });
-
 
 
     }

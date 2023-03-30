@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.automaticmakeupkit.automaticmakeupkit">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutomaticMakeupKit"
         tools:targetApi="31">
+        <activity
+            android:name=".occasionScreen"
+            android:exported="false" />
+        <activity
+            android:name=".informationScreen"
+            android:exported="false" />
         <activity
             android:name=".Dashboard"
             android:exported="false">

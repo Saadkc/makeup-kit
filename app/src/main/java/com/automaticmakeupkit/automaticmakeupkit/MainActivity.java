@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, SignUp.class);
+                Intent intent = new Intent(MainActivity.this, informationScreen.class);
 
                 Pair[] pairs = new Pair[3];
                 pairs[0] = new Pair<View,String>(lottieAnimationView, "logo_image");
