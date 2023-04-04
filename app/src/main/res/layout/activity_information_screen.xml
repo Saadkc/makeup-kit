@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
     tools:context=".informationScreen">
 
     <TextView
@@ -11,9 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/poppins_bold"
         android:text="Information"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,8 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
+        android:fontFamily="@font/poppins"
         android:text="The Design and Development of a Women-based makeup selection device turns the makeup process into an effortless experience with reduced clutter of products. It helps users save a lot of time and take the anxiety out of arranging items post-makeup."
         android:textAlignment="center"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -34,9 +39,13 @@
         android:id="@+id/button"
         android:layout_width="138dp"
         android:layout_height="67dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="48dp"
+        android:backgroundTint="@color/dark_pink"
+        android:fontFamily="@font/poppins"
         android:onClick="SignupScreen"
         android:text="Signup"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,10 +53,14 @@
         android:id="@+id/button2"
         android:layout_width="135dp"
         android:layout_height="67dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="116dp"
+        android:backgroundTint="@color/dark_pink"
+        android:fontFamily="@font/poppins"
         android:onClick="LoginScreen"
         android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

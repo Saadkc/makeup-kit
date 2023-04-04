@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class informationScreen extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class informationScreen extends AppCompatActivity {
         SignIn = findViewById(R.id.button);
         login = findViewById(R.id.button2);
 
-        System.out.println(SignIn);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
