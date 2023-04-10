@@ -24,14 +24,15 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="400dp"
-        android:layout_height="130dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="258dp"
         android:adjustViewBounds="true"
         android:src="@drawable/textlogo"
         android:transitionName="logo_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottie"
+        app:layout_constraintTop_toBottomOf="@+id/connect_button"
         app:layout_constraintVertical_bias="0" />
 
     <TextView
@@ -50,5 +51,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0" />
+
+    <Button
+        android:id="@+id/connect_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="279dp"
+        android:padding="16dp"
+        android:text="Connect"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/lottie"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
