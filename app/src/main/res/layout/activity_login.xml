@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:inputType="textEmailAddress"
+                android:textColor="@android:color/black"
                 android:textSize="15sp"
                 android:textCursorDrawable="@null" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
+                android:textColor="@android:color/black"
                 android:textCursorDrawable="@null"
                 android:textSize="15sp"
                 android:inputType="textPassword" />
