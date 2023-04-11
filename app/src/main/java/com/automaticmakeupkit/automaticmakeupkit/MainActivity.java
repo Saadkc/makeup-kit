@@ -30,6 +30,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.FirebaseApp;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
 
-    private String deviceAddress = "D8:B0:53:86:E8:E3";
+    private String deviceAddress = "98:D3:31:F5:FA:37";
 
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -151,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
                     if(socket.isConnected()){
                         System.out.println("Bluetooth Connected");
+                        OutputStream outputStream = socket.getOutputStream();
+                        String command = "1"; // Replace with the command you want to send
+                        outputStream.write(command.getBytes());
                     }
                     // Connection successful, manage input/output streams
                 } catch (IOException e) {
