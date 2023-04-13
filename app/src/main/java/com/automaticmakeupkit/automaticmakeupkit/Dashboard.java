@@ -34,7 +34,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void NavigateScreen (View view){
-
+        System.out.println("work");
         Intent intent = new Intent(Dashboard.this, occasionScreen.class);
         startActivity(intent);
 
