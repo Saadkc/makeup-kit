@@ -4,36 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
     android:background="@drawable/back1"
+    android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
     tools:context=".informationScreen">
+
+    <ImageView
+        android:id="@+id/plain_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo"
+        android:transitionName="logo_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Information"
+        android:text="Automatic MakeupKit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:fontFamily="@font/poppins"
-        android:text="The Design and Development of a Women-based makeup selection device turns the makeup process into an effortless experience with reduced clutter of products. It helps users save a lot of time and take the anxiety out of arranging items post-makeup."
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button"
@@ -41,13 +43,30 @@
         android:layout_height="67dp"
         android:layout_marginStart="48dp"
         android:backgroundTint="@color/dark_pink"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/poppins_bold"
         android:onClick="SignupScreen"
         android:text="Signup"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/white" />
+
+    <!--     style="@style/Widget.Material3.Button"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_below="@id/forgot_password"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:backgroundTint="@color/dark_pink"-->
+
+    <!--            android:onClick="loginUser"-->
+    <!--            android:text="@string/login_btn"-->
+    <!--            android:textAllCaps="false"-->
+    <!--            android:textColor="@color/white"-->
+
+    <!--            android:transitionName="signin_tran"-->
+
 
     <Button
         android:id="@+id/button2"
@@ -56,11 +75,23 @@
         android:layout_marginStart="40dp"
         android:layout_marginBottom="116dp"
         android:backgroundTint="@color/dark_pink"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/poppins_bold"
         android:onClick="LoginScreen"
         android:text="Login"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="411dp"
+        android:layout_height="392dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/info"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="181dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
